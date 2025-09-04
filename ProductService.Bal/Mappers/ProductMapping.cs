@@ -5,11 +5,11 @@ using ProductService.Dal.Entities;
 namespace ProductService.Bal.Mappers;
 public class ProductMapping:Profile
 {
-    // Add your mapping configurations here
-    // For example:
-    // CreateMap<SourceEntity, DestinationDto>();
-    // CreateMap<DestinationDto, SourceEntity>();
-    public ProductMapping()
+        // Add your mapping configurations here
+        // For example:
+        // CreateMap<SourceEntity, DestinationDto>();
+        // CreateMap<DestinationDto, SourceEntity>();
+        public ProductMapping()
     {
         #region "Products(Entity) To ProductResponse(DTO)"
         CreateMap<Products, ProductResponse>()

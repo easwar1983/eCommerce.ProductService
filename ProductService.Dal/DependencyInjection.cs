@@ -13,15 +13,25 @@ public static class DependencyInjection
     /// </summary>
     /// <param name="iocServices"></param>
     /// <returns></returns>
-    public static IServiceCollection AddDataAccessLayer(this IServiceCollection iocServices,IConfiguration configuration)
+    public static IServiceCollection AddDataAccessLayer(this IServiceCollection iocServices, IConfiguration configuration)
     {
         // Register your Data Access Layer (DAL) services here
         // Example: services.AddSingleton<IMyService, MyService>();
 
-        iocServices.AddDbContext<ApplicationDbContext>(options =>
-            options.UseMySQL(configuration.GetConnectionString("DefaultConnection")!));
+        //iocServices.AddDbContext<ApplicationDbContext>(options =>
+        //    options.UseMySQL(configuration.GetConnectionString("DefaultConnection")!));
 
-        iocServices.AddScoped<IProductsRepository,ProductsRepository>();
+        string connectionStringTemplate = configuration.GetConnectionString("DefaultConnection")!;
+
+        string connectionString = connectionStringTemplate
+            .Replace("$MYSQL_HOST", Environment.GetEnvironmentVariable("MYSQL_HOST"))
+            .Replace("$MYSQL_PASSWORD", Environment.GetEnvironmentVariable("MYSQL_PASSWORD"))
+        ;
+
+        iocServices.AddDbContext<ApplicationDbContext>(options =>
+            options.UseMySQL(connectionString));
+
+        iocServices.AddScoped<IProductsRepository, ProductsRepository>();
 
         //iocServices.AddTransient<DapperDbContext>();
         //iocServices.AddTransient<IProductRepository, ProductRepository>();

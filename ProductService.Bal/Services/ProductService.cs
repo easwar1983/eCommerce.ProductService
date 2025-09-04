@@ -14,11 +14,13 @@ public class ProductService : IProductService
     private readonly IMapper _mapper;
     private readonly IProductsRepository _productsRepository;
 
-    public ProductService(
+    public ProductService
+    (
         IValidator<ProductAddRequest> productAddRequestValidator,
         IValidator<ProductUpdateRequest> productUpdateRequestValidator,
         IMapper mapper,
-        IProductsRepository productsRepository)
+        IProductsRepository productsRepository
+    )
     {
         _productAddRequestValidator = productAddRequestValidator ?? throw new ArgumentNullException(nameof(productAddRequestValidator));
         _productUpdateRequestValidator = productUpdateRequestValidator ?? throw new ArgumentNullException(nameof(productUpdateRequestValidator));
