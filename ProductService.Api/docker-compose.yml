@@ -10,7 +10,8 @@ services:
       - "3306:3306"
     hostname: mysql-host-products-ms
     volumes:
-      - ./SqlScripts:/docker-entrypoint-initdb.d
+      # - ./SqlScript:/docker-entrypoint-initdb.d
+       - ./SqlScript:/docker-entrypoint-initdb.d
     networks:
       - product-msnet
 

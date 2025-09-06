@@ -1,0 +1,69 @@
+﻿1) Create Repositories in docker hub
+2) Build the docker image using the command below
+   docker build -t products-ms:d1.0 -f ./productservice.api/Dockerfile .
+3) Tag the image using the command below
+   docker tag products-ms:d1.0 easwar1983/ecommerce-products-ms:v1.0
+4) Push the image to docker hub using the command below
+   docker push easwar1983/ecommerce-products-ms:v1.0
+5) Check the docker-compose yaml script using the command below
+   docker-compose -f ./productservice.api/docker-compose.yml config
+6) Run the docker-compose script using the command below
+   docker-compose -f ./productservice.api/docker-compose.yml up -d
+7) Check the running containers using the command below
+   docker ps -a
+8) Check the logs of a container using the command below
+   docker logs <container id>
+9) Access the application using the url below
+   http://localhost:8080/swagger/index.html
+10) To stop the containers use the command below
+	docker-compose -f ./productservice.api/docker-compose.yml down
+11) To remove the image use the command below
+	docker rmi easwar1983/ecommerce-product-ms:v1.0
+12) To remove all unused images use the command below
+	docker image prune -a
+13) To remove all unused volumes use the command below
+	docker volume prune
+14) To remove all unused networks use the command below
+	docker network prune
+15) To remove all unused containers use the command below
+	docker container prune
+16) To remove all unused data use the command below
+	docker system prune -a --volumes
+17) To check the docker version use the command below
+	docker --version
+18) To check the docker-compose version use the command below
+	docker-compose --version
+19) To check the docker info use the command below
+	docker info
+20) To check the docker images use the command below
+	docker images
+21) To check the docker volumes use the command below
+	docker volume ls
+22) To check the docker networks use the command below
+	docker network ls
+23) To check the docker containers use the command below
+	docker ps -a
+24) To access a running container use the command below
+	docker exec -it <container id> /bin/sh
+25) To access the docker container logs in real-time use the command below
+	docker logs -f <container id>
+26) To stop a running container use the command below
+	docker stop <container id>
+27) To start a stopped container use the command below
+	docker start <container id>
+28) To restart a running container use the command below
+	docker restart <container id>
+29) To remove a stopped container use the command below
+	docker rm <container id>
+30) To remove all stopped containers use the command below
+	docker container prune
+31) To view detailed information about a container use the command below
+	docker inspect <container id>
+32) To view the resource usage of a container use the command below
+	docker stats <container id>
+33) To view the network settings of a container use the command below
+	docker network inspect <network id>
+34) To view the volume settings of a container use the command below
+	docker volume inspect <volume id>
+35) To view the logs of a container with timestamps use the command below
+	docker logs -t <container id>

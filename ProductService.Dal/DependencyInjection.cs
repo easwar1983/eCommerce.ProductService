@@ -18,9 +18,11 @@ public static class DependencyInjection
         // Register your Data Access Layer (DAL) services here
         // Example: services.AddSingleton<IMyService, MyService>();
 
-        //iocServices.AddDbContext<ApplicationDbContext>(options =>
-        //    options.UseMySQL(configuration.GetConnectionString("DefaultConnection")!));
 
+        ///Local DB Access
+        //string connectionString = configuration.GetConnectionString("DefaultConnection")!;
+
+        ///Container DB Access
         string connectionStringTemplate = configuration.GetConnectionString("DefaultConnection")!;
 
         string connectionString = connectionStringTemplate
@@ -32,9 +34,6 @@ public static class DependencyInjection
             options.UseMySQL(connectionString));
 
         iocServices.AddScoped<IProductsRepository, ProductsRepository>();
-
-        //iocServices.AddTransient<DapperDbContext>();
-        //iocServices.AddTransient<IProductRepository, ProductRepository>();
 
         return iocServices;
     }

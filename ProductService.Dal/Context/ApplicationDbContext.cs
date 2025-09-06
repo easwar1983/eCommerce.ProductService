@@ -9,6 +9,7 @@ public class ApplicationDbContext: DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<Products>().ToTable("products");
         //modelBuilder.Entity<Products>().HasKey(p => p.ProductId);
         //modelBuilder.Entity<Products>().Property(p => p.ProductName).IsRequired().HasMaxLength(100);
         //modelBuilder.Entity<Products>().Property(p => p.Category).HasMaxLength(50);
